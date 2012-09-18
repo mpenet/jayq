@@ -1,6 +1,7 @@
 (ns jayq.core
   (:refer-clojure :exclude [val empty remove find])
-  (:require [clojure.string :as string])
+  (:require [clojure.string :as string]
+            [cljs.reader :as reader])
   (:use [jayq.util :only [clj->js]]))
 
 (defn crate-meta [func]
@@ -194,6 +195,17 @@
     (.ajax js/jQuery url (clj->js settings)))
   ([settings]
     (.ajax js/jQuery (clj->js settings))))
+
+(defn ^:private mimetype-converter [s]
+  (reader/read-string (str s)))
+
+(.ajaxSetup js/jQuery
+ (clj->js
+  {:contents {"clj" #"edn|clj"}
+   :converters
+   {"text edn" mimetype-converter
+    "text clj" mimetype-converter}}))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Events
