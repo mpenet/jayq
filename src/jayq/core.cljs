@@ -1,5 +1,5 @@
 (ns jayq.core
-  (:refer-clojure :exclude [val empty remove find])
+  (:refer-clojure :exclude [val empty remove find next])
   (:require [clojure.string :as string]
             [cljs.reader :as reader])
   (:use [jayq.util :only [clj->js]]))
@@ -125,6 +125,18 @@
 (defn prepend [$elem content]
   (.prepend $elem content))
 
+(defn append-to [$elem target]
+  (.appendTo $elem (->selector target)))
+
+(defn prepend-to [$elem target]
+  (.prependTo $elem (->selector target)))
+
+(defn insert-before [$elem target]
+  (.insertBefore $elem (->selector target)))
+
+(defn insert-after [$elem target]
+  (.insertAfter $elem (->selector target)))
+
 (defn remove [$elem]
   (.remove $elem))
 
@@ -149,14 +161,74 @@
 (defn slide-down [$elem & [speed on-finish]]
   (.slideDown $elem speed on-finish))
 
+(defn siblings
+  ([$elem]
+     (.siblings $elem))
+  ([$elem selector]
+     (.siblings $elem (name selector))))
+
 (defn parent [$elem]
   (.parent $elem))
+
+(defn parents
+  ([$elem]
+     (.parents $elem))
+  ([$elem selector]
+     (.parents $elem (name selector))))
+
+(defn parents-until
+  ([$elem]
+     (.parentsUntil $elem))
+  ([$elem selector]
+     (.parentsUntil $elem (->selector selector)))
+    ([$elem selector filtr]
+     (.parentsUntil $elem (->selector selector) (name filtr))))
+
+(defn next
+  ([$elem]
+     (.next $elem))
+  ([$elem selector]
+     (.next $elem (name selector))))
+
+(defn prev
+  ([$elem]
+     (.prev $elem))
+  ([$elem selector]
+     (.prev $elem (name selector))))
+
+(defn next-all
+  ([$elem]
+     (.nextAll $elem))
+  ([$elem selector]
+     (.nextAll $elem (name selector))))
+
+(defn prev-all
+  ([$elem]
+     (.prevAll $elem))
+  ([$elem selector]
+     (.prevAll $elem (name selector))))
+
+(defn next-until
+  ([$elem]
+     (.nextUntil $elem))
+  ([$elem selector]
+     (.nextUntil $elem (->selector selector)))
+  ([$elem selector filtr]
+     (.nextUntil $elem (->selector selector) (name filtr))))
+
+(defn prev-until
+  ([$elem]
+     (.prevUntil $elem))
+  ([$elem selector]
+     (.prevUntil $elem (->selector selector)))
+  ([$elem selector filtr]
+     (.prevUntil $elem (->selector selector) (name filtr))))
 
 (defn find [$elem selector]
   (.find $elem (name selector)))
 
 (defn closest [$elem selector & [context]]
-  (.closest $elem selector context))
+  (.closest $elem (->selector selector) context))
 
 (defn clone [$elem]
   (.clone $elem))
