@@ -1,5 +1,5 @@
 (ns jayq.core
-  (:refer-clojure :exclude [val empty remove find next])
+  (:refer-clojure :exclude [val empty remove find next parents])
   (:require [clojure.string :as string])
   (:use [jayq.util :only [clj->js]]))
 
