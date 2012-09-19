@@ -164,7 +164,7 @@
   ([$elem]
      (.siblings $elem))
   ([$elem selector]
-     (.siblings $elem (->selector selector))))
+     (.siblings $elem (name selector))))
 
 (defn parent [$elem]
   (.parent $elem))
@@ -173,7 +173,7 @@
   ([$elem]
      (.parents $elem))
   ([$elem selector]
-     (.parents $elem (->selector selector))))
+     (.parents $elem (name selector))))
 
 (defn parents-until
   ([$elem]
@@ -181,31 +181,31 @@
   ([$elem selector]
      (.parentsUntil $elem (->selector selector)))
     ([$elem selector filtr]
-     (.parentsUntil $elem (->selector selector) (->selector filtr))))
+     (.parentsUntil $elem (->selector selector) (name filtr))))
 
 (defn next
   ([$elem]
      (.next $elem))
   ([$elem selector]
-     (.next $elem (->selector selector))))
+     (.next $elem (name selector))))
 
 (defn prev
   ([$elem]
      (.prev $elem))
   ([$elem selector]
-     (.prev $elem (->selector selector))))
+     (.prev $elem (name selector))))
 
 (defn next-all
   ([$elem]
      (.nextAll $elem))
   ([$elem selector]
-     (.nextAll $elem (->selector selector))))
+     (.nextAll $elem (name selector))))
 
 (defn prev-all
   ([$elem]
      (.prevAll $elem))
   ([$elem selector]
-     (.prevAll $elem (->selector selector))))
+     (.prevAll $elem (name selector))))
 
 (defn next-until
   ([$elem]
@@ -213,7 +213,7 @@
   ([$elem selector]
      (.nextUntil $elem (->selector selector)))
   ([$elem selector filtr]
-     (.nextUntil $elem (->selector selector) (->selector filtr))))
+     (.nextUntil $elem (->selector selector) (name filtr))))
 
 (defn prev-until
   ([$elem]
@@ -221,13 +221,13 @@
   ([$elem selector]
      (.prevUntil $elem (->selector selector)))
   ([$elem selector filtr]
-     (.prevUntil $elem (->selector selector) (->selector filtr))))
+     (.prevUntil $elem (->selector selector) (name filtr))))
 
 (defn find [$elem selector]
   (.find $elem (name selector)))
 
 (defn closest [$elem selector & [context]]
-  (.closest $elem selector context))
+  (.closest $elem (->selector selector) context))
 
 (defn clone [$elem]
   (.clone $elem))
