@@ -1,5 +1,5 @@
 (ns jayq.core
-  (:refer-clojure :exclude [val empty remove find])
+  (:refer-clojure :exclude [val empty remove find next])
   (:require [clojure.string :as string])
   (:use [jayq.util :only [clj->js]]))
 
@@ -160,8 +160,68 @@
 (defn slide-down [$elem & [speed on-finish]]
   (.slideDown $elem speed on-finish))
 
+(defn siblings
+  ([$elem]
+     (.siblings $elem))
+  ([$elem selector]
+     (.siblings $elem selector)))
+
 (defn parent [$elem]
   (.parent $elem))
+
+(defn parents
+  ([$elem]
+     (.parents $elem))
+  ([$elem selector]
+     (.parents $elem selector)))
+
+(defn parents-until
+  ([$elem]
+     (.parentsUntil $elem))
+  ([$elem selector]
+     (.parentsUntil $elem selector))
+    ([$elem selector filtr]
+     (.parentsUntil $elem selector filtr)))
+
+(defn next
+  ([$elem]
+     (.next $elem))
+  ([$elem selector]
+     (.next $elem selector)))
+
+(defn prev
+  ([$elem]
+     (.prev $elem))
+  ([$elem selector]
+     (.prev $elem selector)))
+
+(defn next-all
+  ([$elem]
+     (.nextAll $elem))
+  ([$elem selector]
+     (.nextAll $elem selector)))
+
+(defn prev-all
+  ([$elem]
+     (.prevAll $elem))
+  ([$elem selector]
+     (.prevAll $elem selector)))
+
+(defn next-until
+  ([$elem]
+     (.nextUntil $elem))
+  ([$elem selector]
+     (.nextUntil $elem selector))
+  ([$elem selector filtr]
+     (.nextUntil $elem selector filtr)))
+
+(defn prev-until
+  ([$elem]
+     (.prevUntil $elem))
+  ([$elem selector]
+     (.prevUntil $elem selector))
+  ([$elem selector filtr]
+     (.prevUntil $elem selector filtr)))
 
 (defn find [$elem selector]
   (.find $elem (name selector)))
