@@ -125,16 +125,16 @@
   (.prepend $elem content))
 
 (defn append-to [$elem target]
-  (.appendTo $elem target))
+  (.appendTo $elem (->selector target)))
 
 (defn prepend-to [$elem target]
-  (.prependTo $elem target))
+  (.prependTo $elem (->selector target)))
 
 (defn insert-before [$elem target]
-  (.insertBefore $elem target))
+  (.insertBefore $elem (->selector target)))
 
 (defn insert-after [$elem target]
-  (.insertAfter $elem target))
+  (.insertAfter $elem (->selector target)))
 
 (defn remove [$elem]
   (.remove $elem))
@@ -164,7 +164,7 @@
   ([$elem]
      (.siblings $elem))
   ([$elem selector]
-     (.siblings $elem selector)))
+     (.siblings $elem (->selector selector))))
 
 (defn parent [$elem]
   (.parent $elem))
@@ -173,55 +173,55 @@
   ([$elem]
      (.parents $elem))
   ([$elem selector]
-     (.parents $elem selector)))
+     (.parents $elem (->selector selector))))
 
 (defn parents-until
   ([$elem]
      (.parentsUntil $elem))
   ([$elem selector]
-     (.parentsUntil $elem selector))
+     (.parentsUntil $elem (->selector selector)))
     ([$elem selector filtr]
-     (.parentsUntil $elem selector filtr)))
+     (.parentsUntil $elem (->selector selector) (->selector filtr))))
 
 (defn next
   ([$elem]
      (.next $elem))
   ([$elem selector]
-     (.next $elem selector)))
+     (.next $elem (->selector selector))))
 
 (defn prev
   ([$elem]
      (.prev $elem))
   ([$elem selector]
-     (.prev $elem selector)))
+     (.prev $elem (->selector selector))))
 
 (defn next-all
   ([$elem]
      (.nextAll $elem))
   ([$elem selector]
-     (.nextAll $elem selector)))
+     (.nextAll $elem (->selector selector))))
 
 (defn prev-all
   ([$elem]
      (.prevAll $elem))
   ([$elem selector]
-     (.prevAll $elem selector)))
+     (.prevAll $elem (->selector selector))))
 
 (defn next-until
   ([$elem]
      (.nextUntil $elem))
   ([$elem selector]
-     (.nextUntil $elem selector))
+     (.nextUntil $elem (->selector selector)))
   ([$elem selector filtr]
-     (.nextUntil $elem selector filtr)))
+     (.nextUntil $elem (->selector selector) (->selector filtr))))
 
 (defn prev-until
   ([$elem]
      (.prevUntil $elem))
   ([$elem selector]
-     (.prevUntil $elem selector))
+     (.prevUntil $elem (->selector selector)))
   ([$elem selector filtr]
-     (.prevUntil $elem selector filtr)))
+     (.prevUntil $elem (->selector selector) (->selector filtr))))
 
 (defn find [$elem selector]
   (.find $elem (name selector)))
