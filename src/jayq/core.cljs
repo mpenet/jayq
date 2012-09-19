@@ -124,6 +124,18 @@
 (defn prepend [$elem content]
   (.prepend $elem content))
 
+(defn append-to [$elem target]
+  (.appendTo $elem target))
+
+(defn prepend-to [$elem target]
+  (.prependTo $elem target))
+
+(defn insert-before [$elem target]
+  (.insertBefore $elem target))
+
+(defn insert-after [$elem target]
+  (.insertAfter $elem target))
+
 (defn remove [$elem]
   (.remove $elem))
 
