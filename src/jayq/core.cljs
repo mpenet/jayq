@@ -273,8 +273,7 @@
 
 (.ajaxSetup js/jQuery
  (clj->js
-  {:contents {"clj" #"edn|clj"}
-   :accepts {:edn "application/edn, text/edn"
+  {:accepts {:edn "application/edn, text/edn"
              :clj "application/clj, text/clj"}
    :contents {"clj" #"edn|clj"}
    :converters
