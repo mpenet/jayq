@@ -184,8 +184,11 @@
     ([$elem selector filtr]
      (.parentsUntil $elem (->selector selector) (name filtr))))
 
-(defn children [$elem selector]
-  (.children $elem (name selector)))
+(defn children
+  ([$elem selector]
+     (.children $elem (name selector)))
+  ([$elem]
+     (.children $elem)))
 
 (defn next
   ([$elem]
