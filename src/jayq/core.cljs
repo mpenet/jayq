@@ -183,6 +183,9 @@
     ([$elem selector filtr]
      (.parentsUntil $elem (->selector selector) (name filtr))))
 
+(defn children [$elem selector]
+  (.children $elem (name selector)))
+
 (defn next
   ([$elem]
      (.next $elem))
