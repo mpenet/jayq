@@ -113,6 +113,9 @@
   (let [cl (name cl)]
     (.hasClass $elem cl)))
 
+(defn is [$elem selector]
+  (.is $elem (->selector selector)))
+
 (defn after [$elem content]
   (.after $elem content))
 
