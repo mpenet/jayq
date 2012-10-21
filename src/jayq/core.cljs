@@ -283,11 +283,11 @@
 (.ajaxSetup js/jQuery
  (clj->js
   {:accepts {:edn "application/edn, text/edn"
-             :clj "application/clj, text/clj"}
-   :contents {"clj" #"edn|clj"}
+             :clojure "application/clojure, text/clojure"}
+   :contents {"clojure" #"edn|clojure"}
    :converters
    {"text edn" mimetype-converter
-    "text clj" mimetype-converter}}))
+    "text clojure" mimetype-converter}}))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
